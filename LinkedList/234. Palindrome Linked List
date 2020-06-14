@@ -1,0 +1,64 @@
+Qs:-
+
+Given a singly linked list, determine if it is a palindrome.
+
+Example 1:
+
+Input: 1->2
+Output: false
+Example 2:
+
+Input: 1->2->2->1
+Output: true
+======================================================================================================================
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+struct ListNode *reversed(struct ListNode *head)
+{
+    struct ListNode *prev=NULL;
+   struct ListNode *cur=head;
+    struct ListNode *fut=head;
+    while(cur)
+    {
+        fut=fut->next;
+        cur->next=prev;
+        prev=cur;
+        cur=fut;
+    }
+    head=prev;
+    return head;
+}
+
+
+bool isPalindrome(struct ListNode* head){
+    
+    struct ListNode *start=head;
+    struct ListNode *end=head;
+    
+    while(end && end->next)
+    {
+        start=start->next;
+        end=end->next->next;
+    }
+    start=reversed(start);
+    end=head;
+    
+    
+    while(start)
+    {
+        if(start->val!=end->val)
+                return false;
+        start=start->next;
+        end=end->next;
+    }
+    return true;
+}
+
+
