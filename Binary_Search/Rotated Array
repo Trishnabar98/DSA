@@ -7,13 +7,15 @@ Find the minimum element.
 
 The array will not contain duplicates.
 ===================================================================================================================================
-int Solution::findMin(const vector<int> &A) {
-    // Do not write main() function.
-    // Do not read input, instead use the arguments to the function.
-    // Do not print the output, instead return values as specified
-    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
-    int n=A.size();
-    int low=0; int high=n-1; int index=0; 
+/**
+ * @input A : Read only ( DON'T MODIFY ) Integer array
+ * @input n1 : Integer array's ( A ) length
+ * 
+ * @Output Integer
+ */
+int findMin(const int* A, int n1) {
+   
+    int low=0; int high=n1-1; int index=0; 
     while(low<=high)
     {
         int mid = (low+high)/2;
@@ -30,3 +32,5 @@ int Solution::findMin(const vector<int> &A) {
     }
 return A[index];
 }
+
+
