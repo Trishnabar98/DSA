@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+#define max 5
+
+
+struct Vertex
+{
+    char label;
+    bool visited;
+};
+
+
+struct Vertex* fstvertices[max];
+
+int adjmatrix[max][max];
+
+int countvertex=0;
+
+int stack[max];
+int top=-1;
+
+
+void push(int data)
+{
+    stack[++top]=data;
+}
+
+int pop()
+{
+    return stack[top--];   
+}
+
+int peek()
+{
+    return stack[top];
+}
+
+bool isempty()
+{
+    return top==-1;
+}
+
+void addvertex(char label)
+{
+    struct Vertex *vertex=(struct Vertex*)malloc(sizeof(struct Vertex));
+    vertex->label=label;
+    vertex->visited=false;
+    fstvertices[countvertex++]=vertex;
+}
+void addedge(int start,int end)
+{
+    adjmatrix[start][end]=1;
+    adjmatrix[end][start]=1;
+}
+
+void displayvertex(int vertexindex)
+{
+    printf("%c\t",fstvertices[vertexindex]->label);
+}
+
+int adjunvisitedvertices(int vertexindex)
+{
+    int i;
+   // int unvisited=adjunvisitedvertices(peek());
+    for(i=0;i<countvertex;i++)
+    {
+        if(adjmatrix[vertexindex][i]==1 && fstvertices[i]->visited==false)
+            return i;
+    }
+    return -1;
+}
+
+void dfs()
+{
+    int i;
+    
+    fstvertices[0]->visited=true;
+    displayvertex(0);
+    push(0);
+    
+    while(!isempty())
+    {
+        int unvisited=adjunvisitedvertices(peek());
+    
+        if(unvisited==-1)
+        {
+         pop();   
+        }
+        else
+        {
+            fstvertices[unvisited]->visited=true;
+            displayvertex(unvisited);
+            push(unvisited);
+        }
+    }
+    for(i=0;i<countvertex;i++)
+    {
+        fstvertices[i]->visited=false;
+    }
+    
+}
+int main(void) {
+	
+	int i,j;
+	for(i=0;i<max;i++)
+	{
+	    for(j=0;j<max;j++)
+	    {
+	        adjmatrix[i][j]=0;
+	    }
+	}
+   addvertex('S');   // 0
+   addvertex('G');   // 1
+   addvertex('B');   // 2
+   addvertex('F');   // 3
+   addvertex('D');   // 4
+
+   addedge(0, 1);    // S - A
+   addedge(0, 2);    // S - B
+   addedge(0, 3);    // S - C
+   addedge(1, 4);    // A - D
+   addedge(2, 4);    // B - D
+   addedge(3, 4);    // C - D
+
+   printf("Depth First Search: ");
+   dfs(); 
+	return 0;
+}
+
