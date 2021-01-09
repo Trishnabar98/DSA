@@ -1,0 +1,39 @@
+QS:-  Longest Common Subsequence of two arrays out of which one array consists of distinct elements only.
+
+
+code
+======
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+	// your code goes here
+	vector<int> firstArr={3,5,1,8};
+	vector<int> secondArr={3,3,5,3,8};
+	
+	
+	map<int,int> mp;
+    for(size_t i=0;i<firstArr.size();i++)
+    {
+        mp[firstArr[i]]=1;
+    }
+    for(size_t i=0;i<secondArr.size();i++)
+    {
+        if(mp.find(secondArr[i])!=mp.end())
+        {
+            ++mp[secondArr[i]];
+        }
+    }
+    int count=0;
+    for(auto it=mp.begin();it!=mp.end();it++)
+    {
+        if(it->second>=2)
+            ++count;
+    }
+    cout<<count;
+	
+	return 0;
+}
+
