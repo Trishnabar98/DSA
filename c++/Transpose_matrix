@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() 
+{
+	// your code goes here
+	int i,j,m,n,k,a[10][10];
+	cin>>m;
+	cin>>n;
+	
+	for(i=0;i<n;i++)
+	{
+	    for(j=0;j<m;j++)
+	    {
+	        cin>>a[i][j];
+	    }
+	}
+	
+	
+	 
+	    for(i=0;i<n;i++)
+	    {
+	        for(j=0;j<m;j++)
+	        {
+	            cout<<a[j][i]<<" ";
+	        }
+	        cout<<"\n";
+	    }
+	
+	
+	return 0;
+}
