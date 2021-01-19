@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() 
+{
+	// your code goes here
+	int i,j,m,n,k,a[10][10],b[10][10],mul[10][10];
+	cin>>m;
+	cin>>n;
+	
+	for(i=0;i<n;i++)
+	{
+	    for(j=0;j<m;j++)
+	    {
+	        cin>>a[i][j];
+	    }
+	}
+	
+	
+	for(i=0;i<n;i++)
+	{
+	    for(j=0;j<m;j++)
+	    {
+	        cin>>b[i][j];
+	    }
+	}
+	
+	for(i=0;i<n;i++)
+	{
+	    
+	    for(j=0;j<m;j++)
+	    {
+	        mul[i][j]=0;
+	        for(k=0;k<m;k++)
+	        {
+	            mul[i][j]+=a[i][k]*b[k][j];
+	        }
+	        
+	    }
+	}   
+	    for(i=0;i<n;i++)
+	    {
+	        for(j=0;j<m;j++)
+	        {
+	            cout<<mul[i][j];
+	        }
+	        cout<<"\n";
+	    }
+	
+	
+	return 0;
+}
