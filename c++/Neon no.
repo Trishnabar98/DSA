@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n,rem,temp,sum=0;
+	int sq;
+	cin>>n;
+	sq=pow(n,2);
+	//temp=n;
+	while(sq!=0)
+	{
+	    rem=sq%10;
+	    sum+=rem;
+	    sq/=10;
+	}
+	//cout<<sum<<endl;
+	if(n==sum)
+	    cout<<"neon"<<endl;
+	 else
+	    cout<<"not neon"<<endl;
+	    
+	    
+	return 0;
+}	
