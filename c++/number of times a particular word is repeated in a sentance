@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void countwords(string st,string key)
+{
+    map<string,int> fw;
+    stringstream s(st);
+    string word;
+    
+    //int c=0;
+    while(s>>word)
+    {
+        fw[word]++;
+    }
+    
+    
+        cout<<fw[key];
+    
+}
+int main() {
+	// your code goes here
+	string s="xyz is  is nmb nothing";
+	         
+	string key="nmb";         
+	countwords(s,key);         
+	return 0;
+}
