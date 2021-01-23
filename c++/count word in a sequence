@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void countwords(string st)
+{
+    unordered_map<string,int> fw;
+    stringstream s(st);
+    string word;
+    
+    //int c=0;
+    while(s>>word)
+    {
+        fw[word]++;
+    }
+    
+    for(auto it=fw.begin();it!=fw.end();it++)
+        cout<<it->first<<" "<<it->second<<"\n";
+    
+}
+int main() {
+	// your code goes here
+	string s="xyz is  nmb nothing";
+	countwords(s);         
+	return 0;
+}
