@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void missing(string s1,int n1,string s2,int n2)
+{
+    map<char,int> mp;
+    for(int i=0;i<n1;i++)
+    {
+        ++mp[s1[i]];
+    }
+    for(int j=0;j<n1;j++)
+    {
+        ++mp[s2[j]];
+    }
+    for(auto it=mp.begin();it!=mp.end();it++ )
+    {
+        if(it->second==1)
+        {
+            cout<<it->first<<" ";
+        }
+    }
+    
+    
+}
+
+int main() {
+	// your code goes here
+	int n1,n2;
+	string s1,s2;
+	cin>>s1>>s2;
+	n1=s1.size();
+	n2=s2.size();
+	missing(s1,n1,s2,n2);
+	
+	return 0;
+}
+
+
+input
+=======
+abcdefgij
+abcdefgi
+
+output
+========
+j
