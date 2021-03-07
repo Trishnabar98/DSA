@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int gcd(int a,int b)
+{
+    if(b==0)
+        return a;
+    return gcd(b,a%b);    
+}
+
+
+int main() {
+	// your code goes here
+	int a,b,c,d,e;
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	d=(a*b)/gcd(a,b);
+	e=(d*c)/gcd(d,c);
+	cout<<e;
+	return 0;
+}
